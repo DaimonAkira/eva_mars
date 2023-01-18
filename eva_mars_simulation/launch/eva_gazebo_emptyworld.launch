@@ -30,8 +30,6 @@
 	<!-- Joint State Publisher -->
 	<node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher"/>
 	
-	<!-- Odom Publish Throttling/Dropping For LaserScan Transform
-	<node name="topic_tools" type="drop" pkg="topic_tools" args="/odom 29 30 /odom_dropped_rate" />-->
 
 
 </launch>

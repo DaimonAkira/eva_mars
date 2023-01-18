@@ -1,0 +1,723 @@
+<?xml version="1.0" ?>
+<sdf>
+  <model name="eva_mars">
+    <pose>0 0 0 0 0 0</pose>
+    <!-- Main Chassis -->
+    <link name="base_link">
+      <!-- Physics -->
+      <collision name="base_link_collision">
+        <pose>0 0 0.8 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.42 0.33 0.05</size>
+          </box>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass>10.0</mass>
+        <pose>0 0 0.12 0 0 0</pose>
+        <inertia>
+          <ixx>0.149</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>0.98</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.2433</izz>
+        </inertia>
+      </inertial>
+      <!-- Visual -->
+      <!-- Base frame -->
+      <visual name="base_link">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://eva_mars/meshes/base_taban.stl</uri>
+            <scale>0.0035 0.0009 0.0015</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Blue</name>
+          </script>
+        </material>
+      </visual>
+      <!-- Base_Link (Govde) -->
+      <visual name="base_govde">
+        <pose>0.075 -0.145 -0.06 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://eva_mars/meshes/model.STL</uri>
+            <scale>0.0115 0.013 0.013</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Blue</name>
+          </script>
+        </material>
+      </visual>
+    <!-- Wheels -->
+    <!-- Right Back Wheel -->
+    <link name="right_back_wheel">
+      <pose>-0.1825 -0.20 0.0575 1.57 0 0</pose>
+      <inertial>
+        <mass>3.0</mass>
+        <pose>0 0 0 0 0 0</pose>
+        <inertia>
+          <ixx>0.0054</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0054</iyy>
+          <iyz>0</iyz>
+          <izz>0.0054</izz>
+        </inertia>
+      </inertial>
+      <collision name="right_back_wheel_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.0575</radius>
+            <length>0.045</length>
+          </cylinder>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>100000.0</mu>
+              <mu2>100000.0</mu2>
+              <slip1>0.0</slip1>
+              <slip2>0.0</slip2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="right_back_wheel">
+        <pose>0.054 -0.054 0.02 0 1.57 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://eva_mars/meshes/wheel.STL</uri>
+            <scale>0.02 0.025 0.025</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Black</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+    <joint name="right_back_joint" type="continuous">
+      <parent>base_link</parent>
+      <child>right_back_wheel</child>
+      <axis>
+        <xyz>0 0 -1</xyz>
+        <use_parent_model_frame>true</use_parent_model_frame>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0.000000</cfm>
+            <erp>0.900000</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <!-- Right Middle Wheel -->
+    <link name="right_middle_wheel">
+      <pose>0.0 -0.20 0.0575 1.57 0 0</pose>
+      <inertial>
+        <mass>3.0</mass>
+        <pose>0 0 0 0 0 0</pose>
+        <inertia>
+          <ixx>0.0054</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0054</iyy>
+          <iyz>0</iyz>
+          <izz>0.0054</izz>
+        </inertia>
+      </inertial>
+      <collision name="right_middle_wheel_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.0575</radius>
+            <length>0.045</length>
+          </cylinder>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>100000.0</mu>
+              <mu2>100000.0</mu2>
+              <slip1>0.0</slip1>
+              <slip2>0.0</slip2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="right_middle_wheel">
+        <pose>0.054 -0.054 0.02 0 1.57 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://eva_mars/meshes/wheel.STL</uri>
+            <scale>0.02 0.025 0.025</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Black</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+    <joint name="right_middle_joint" type="continuous">
+      <parent>base_link</parent>
+      <child>right_middle_wheel</child>
+      <axis>
+        <xyz>0 0 -1</xyz>
+        <use_parent_model_frame>true</use_parent_model_frame>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0.000000</cfm>
+            <erp>0.900000</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <!-- Right Front Wheel -->
+    <link name="right_front_wheel">
+      <pose>0.1825 -0.20 0.0575 1.57 0 0</pose>
+      <inertial>
+        <mass>3.0</mass>
+        <pose>0 0 0 0 0 0</pose>
+        <inertia>
+          <ixx>0.0054</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0054</iyy>
+          <iyz>0</iyz>
+          <izz>0.0054</izz>
+        </inertia>
+      </inertial>
+      <collision name="right_front_wheel_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.0575</radius>
+            <length>0.045</length>
+          </cylinder>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>100000.0</mu>
+              <mu2>100000.0</mu2>
+              <slip1>0.0</slip1>
+              <slip2>0.0</slip2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="right_front_wheel">
+        <pose>0.054 -0.054 0.02 0 1.57 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://eva_mars/meshes/wheel.STL</uri>
+            <scale>0.02 0.025 0.025</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Black</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+    <joint name="right_front_joint" type="continuous">
+      <parent>base_link</parent>
+      <child>right_front_wheel</child>
+      <axis>
+        <xyz>0 0 -1</xyz>
+        <use_parent_model_frame>true</use_parent_model_frame>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0.000000</cfm>
+            <erp>0.900000</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <!-- Left Back Wheel -->
+    <link name="left_back_wheel">
+      <pose>-0.1825 0.20 0.0575 1.57 0 0</pose>
+      <inertial>
+        <mass>3.0</mass>
+        <pose>0 0 0 0 0 0</pose>
+        <inertia>
+          <ixx>0.0054</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0054</iyy>
+          <iyz>0</iyz>
+          <izz>0.0054</izz>
+        </inertia>
+      </inertial>
+      <collision name="left_back_wheel_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.0575</radius>
+            <length>0.045</length>
+          </cylinder>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>100000.0</mu>
+              <mu2>100000.0</mu2>
+              <slip1>0.0</slip1>
+              <slip2>0.0</slip2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="left_back_wheel">
+        <pose>0.054 -0.054 0.02 0 1.57 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://eva_mars/meshes/wheel.STL</uri>
+            <scale>0.02 0.025 0.025</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Black</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+    <joint name="left_back_joint" type="continuous">
+      <parent>base_link</parent>
+      <child>left_back_wheel</child>
+      <axis>
+        <xyz>0 0 -1</xyz>
+        <use_parent_model_frame>true</use_parent_model_frame>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0.000000</cfm>
+            <erp>0.900000</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    
+   <!-- Left Middle Wheel -->    
+    <link name="left_middle_wheel">
+      <pose>0.0 0.20 0.0575 1.57 0 0</pose>
+      <inertial>
+        <mass>3.0</mass>
+        <pose>0 0 0 0 0 0</pose>
+        <inertia>
+          <ixx>0.0054</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0054</iyy>
+          <iyz>0</iyz>
+          <izz>0.0054</izz>
+        </inertia>
+      </inertial>
+      <collision name="left_middle_wheel_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.0575</radius>
+            <length>0.045</length>
+          </cylinder>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>100000.0</mu>
+              <mu2>100000.0</mu2>
+              <slip1>0.0</slip1>
+              <slip2>0.0</slip2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="left_middle_wheel">
+        <pose>0.054 -0.054 0.02 0 1.57 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://eva_mars/meshes/wheel.STL</uri>
+            <scale>0.02 0.025 0.025</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Black</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+    <joint name="left_middle_joint" type="continuous">
+      <parent>base_link</parent>
+      <child>left_middle_wheel</child>
+      <axis>
+        <xyz>0 0 -1</xyz>
+        <use_parent_model_frame>true</use_parent_model_frame>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0.000000</cfm>
+            <erp>0.900000</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>    
+
+    <!-- Left Front Wheel -->
+    <link name="left_front_wheel">
+      <pose>0.1825 0.20 0.0575 1.57 0 0</pose>
+      <inertial>
+        <mass>3.0</mass>
+        <pose>0 0 0 0 0 0</pose>
+        <inertia>
+          <ixx>0.0054</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0054</iyy>
+          <iyz>0</iyz>
+          <izz>0.0054</izz>
+        </inertia>
+      </inertial>
+      <collision name="left_front_wheel_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.0575</radius>
+            <length>0.045</length>
+          </cylinder>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>100000.0</mu>
+              <mu2>100000.0</mu2>
+              <slip1>0.0</slip1>
+              <slip2>0.0</slip2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="left_front_wheel">
+        <pose>0.054 -0.054 0.02 0 1.57 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://eva_mars/meshes/wheel.STL</uri>
+            <scale>0.02 0.025 0.025</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Black</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+    <joint name="left_front_joint" type="continuous">
+      <parent>base_link</parent>
+      <child>left_front_wheel</child>
+      <axis>
+        <xyz>0 0 -1</xyz>
+        <use_parent_model_frame>true</use_parent_model_frame>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0.000000</cfm>
+            <erp>0.900000</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <!-- Camera Port -->
+      <visual name="camera_port">
+        <pose>-0.2 0 0.18 0 0 -1.57</pose>
+        <geometry>
+          <mesh>
+            <uri>model://eva_mars/meshes/drillbox.stl</uri>
+            <scale>0.0008 0.0008 0.010</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Black</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+    <joint name="camera_port_joint" type="continuous">
+      <parent>base_link</parent>
+      <child>camera_port</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <use_parent_model_frame>true</use_parent_model_frame>
+        <limit>
+           <effort>10.0</effort>
+           <lower>-0.10</lower>
+           <upper>0.10</upper>
+           <velocity>0.5</velocity>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0.000000</cfm>
+            <erp>0.900000</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    
+    <!-- Camera Link -->
+    <link name="camera_link">
+      <pose>0.0 0.04 0.158 0 0 1.57</pose>
+      <collision name="camera_link_collision">
+        <pose>0 0 0 -1.57 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.015 0.031 0.027</radius>
+          </box>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>100000.0</mu>
+              <mu2>100000.0</mu2>
+              <slip1>0.0</slip1>
+              <slip2>0.0</slip2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="camera_link">
+        <pose>0 0 0 -1.57 0 -1.57</pose>
+        <geometry>
+          <mesh>
+            <uri>model://eva_mars/meshes/camera.STL</uri>
+            <scale>0.0011 0.0011 0.0011</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Red</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+    <joint name="camera_link_joint" type="fixed">
+      <parent>camera_port</parent>
+      <child>camera_link</child>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0.000000</cfm>
+            <erp>0.900000</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>   
+    <link name = "camera_rgb_frame">
+    <joint name="camera_rgb_joint" type="fixed">
+      <parent>camera_link</parent>
+      <child>camera_rgb_frame</child>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0.000000</cfm>
+            <erp>0.900000</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name = "camera_rgb_optic_frame">
+    <joint name="camera_rgb_optic_joint" type="fixed">
+      <parent>camera_rgb_frame</parent>
+      <child>camera_rgb_optic_frame</child>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0.000000</cfm>
+            <erp>0.900000</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>    
+    
+    <!-- Sondaj Components -->
+    <link name="sondaj_link">
+      <pose>-0.26 0 0.21 0 0 1.57</pose>
+      <visual name="sondaj_link">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <lenght>0.13</length>
+            <radius>0.015</radius>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Grey</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+    <joint name="sondaj_joint" type="prismatic">
+      <parent>base_link</parent>
+      <child>sondaj_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <use_parent_model_frame>true</use_parent_model_frame>
+        <limit>
+           <effort>10.0</effort>
+           <lower>-0.04</lower>
+           <upper>0.01</upper>
+           <velocity>0.5</velocity>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0.000000</cfm>
+            <erp>0.900000</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name="sondaj2_link">   
+      <pose>-0.26 0 0.19 0 0 1.57</pose>
+      <visual name="sondaj2_link">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <lenght>0.08</length>
+            <radius>0.01</radius>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Grey</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+    <joint name="sondaj2_joint" type="prismatic">
+      <parent>base_link</parent>
+      <child>sondaj2_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <use_parent_model_frame>true</use_parent_model_frame>
+        <limit>
+           <effort>10.0</effort>
+           <lower>-0.1</lower>
+           <upper>0.0</upper>
+           <velocity>0.5</velocity>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0.000000</cfm>
+            <erp>0.900000</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name="sondaj3_link">
+      <pose>-0.26 0 0.135 0 0 1.57</pose>
+      <visual name="sondaj3_link">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://eva_mars/meshes/drill.stl</uri>
+            <scale>0.015 0.015 0.03</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/DarkGrey</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+    <joint name="sondaj3_joint" type="prismatic">
+      <parent>base_link</parent>
+      <child>sondaj3_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <use_parent_model_frame>true</use_parent_model_frame>
+        <limit>
+           <effort>10.0</effort>
+           <lower>-0.24</lower>
+           <upper>0.0</upper>
+           <velocity>0.5</velocity>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0.000000</cfm>
+            <erp>0.900000</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name="sondaj_box_link"> 
+      <pose>0.26 0 0.145 0 0 0</pose>
+      <visual name="sondaj_box_link">
+        <pose>0 0 0 0 0 1.57</pose>
+        <geometry>
+          <mesh>
+            <uri>model://eva_mars/meshes/drillbox.stl</uri>
+            <scale>0.001 0.001 0.004</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Blue</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+    <joint name="sondaj_box_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>sondaj_box_link</child>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0.000000</cfm>
+            <erp>0.900000</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint> 
+    
+      <plugin name="diffdrive_plugin_6w" filename="libdiffdrive_plugin_6w.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>20.0</updateRate>
+	<frontLeftJoint>left_front_joint</frontLeftJoint>
+	<frontRightJoint>right_front_joint</frontRightJoint>
+	<midLeftJoint>left_middle_joint</midLeftJoint>
+	<midRightJoint>right_middle_joint</midRightJoint>
+	<rearLeftJoint>left_back_joint</rearLeftJoint>
+	<rearRightJoint>right_back_joint</rearRightJoint>
+        <wheelSeparation>0.2</wheelSeparation>
+        <wheelDiameter>0.02</wheelDiameter>
+        <torque>240</torque>
+      </plugin>
+</sdf>

@@ -1,0 +1,6 @@
+<?xml version='1.0'?>
+
+<launch>
+	<node name="eva_mission_day4" pkg="eva_mission_day4_packages" type="eva_mission_day4.py" output="screen" />
+
+</launch>
